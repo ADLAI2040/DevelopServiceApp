@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use mysqli;
-
 class UserController
 {
 
@@ -54,7 +51,7 @@ class UserController
         }
 
         echo "Connection succes\n";
-        
+
         $sql = "SHOW DATABASES";
 
         $res = mysqli_query($connect, $sql);
