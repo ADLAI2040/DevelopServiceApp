@@ -7,6 +7,9 @@ use mysqli;
 
 class UserController
 {
+
+    //show information about client(user)
+
     public function showInfoClient()
     {
         $infoClient = array(
@@ -19,6 +22,8 @@ class UserController
         echo "<pre>" . json_encode($infoClient, JSON_PRETTY_PRINT) . "</pre>";
     }
 
+    //show information about server (php version)
+
     public function showInfoServer()
     {
         $infoServer = array(
@@ -28,13 +33,19 @@ class UserController
         echo "<pre>" . json_encode($infoServer, JSON_PRETTY_PRINT) . "</pre>";
     }
 
+    // show information about database
+
     public function showInfoDB()
     {
         $DB = array();
 
+        //data for autorisation
+
         $servername = "localhost";
         $username = "root";
         $password = "";
+
+        //connect
 
         $connect = mysqli_connect($servername, $username, $password);
 
@@ -43,10 +54,12 @@ class UserController
         }
 
         echo "Connection succes\n";
-
+        
         $sql = "SHOW DATABASES";
 
         $res = mysqli_query($connect, $sql);
+
+        //info about database
 
         while ($entry = mysqli_fetch_row($res)) {
             foreach ($entry as $value) {
